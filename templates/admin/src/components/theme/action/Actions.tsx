@@ -1,12 +1,14 @@
 import { Button, CircularProgress, Icon } from '@mui/material';
+import classNames from 'classnames';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {
   ActionButtonProps,
   ActionContainerProps,
   ActionLinkProps,
-} from '../../../lib/plume-admin-theme/action/ActionProps';
-import ActionStyle from '../../../lib/plume-admin-theme/action/ActionStyle';
+} from '@lib/plume-admin-theme/action/ActionProps';
+import ActionStyle from '@lib/plume-admin-theme/action/ActionStyle';
+import scss from './actions.module.scss';
 
 function actionStyleToCssClass(
   actionStyle?: ActionStyle,
@@ -25,7 +27,7 @@ export function ActionsContainer({
   cssClasses,
 }: ActionContainerProps) {
   return (
-    <div className={`actions ${cssClasses ?? ''}`}>
+    <div className={classNames(scss.actions, cssClasses)}>
       {children}
     </div>
   );
@@ -36,7 +38,7 @@ export function ActionLink({
 }: ActionLinkProps) {
   return (
     <Button
-      className={`action-container ${actionStyleToCssClass(style)}`}
+      className={classNames(scss.actionContainer, actionStyleToCssClass(style))}
       variant="contained"
       color={actionStyleToCssClass(style)}
       component={Link}
@@ -58,9 +60,12 @@ export function ActionButton({
 }: ActionButtonProps) {
   return (
     <div
-      className={
-        `action-container loading-button ${cssClasses ?? ''}${isLoading ? ' loading-button--loading' : ''}`
-      }
+      className={classNames(
+        scss.actionContainer,
+        scss.loadingButton,
+        cssClasses,
+        {[scss.loadingButtonLoading]: isLoading})
+    }
     >
       <Button
         onClick={onClick}
@@ -75,7 +80,7 @@ export function ActionButton({
       {
         isLoading
         && (
-          <div className="loading-progress">
+          <div className={scss.loadingProgress}>
             <CircularProgress size="100%" color="inherit" />
           </div>
         )

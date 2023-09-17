@@ -1,16 +1,17 @@
 import React from 'react';
-import { ActionButton, ActionsContainer } from '../action/Actions';
-import ActionStyle from '../../../lib/plume-admin-theme/action/ActionStyle';
-import { PopinCloseWithoutSavingProps, PopinProps } from '../../../lib/plume-admin-theme/popin/PopinProps';
+import ActionStyle from '@lib/plume-admin-theme/action/ActionStyle';
+import { PopinCloseWithoutSavingProps, PopinProps } from '@lib/plume-admin-theme/popin/PopinProps';
+import useMessages from '@i18n/hooks/messagesHook';
 import { Panel } from '../layout/Panel';
-import useMessages from '../../../i18n/hooks/messagesHook';
+import { ActionButton, ActionsContainer } from '../action/Actions';
+import scss from './popin.module.scss';
 
 export function Popin({
   children, zIndex, height, width,
 }: PopinProps) {
   return (
-    <div className="popin" style={{ zIndex: zIndex ?? 100 }}>
-      <div className="popin-container" style={{ height, width }}>
+    <div className={scss.popin} style={{ zIndex: zIndex ?? 100 }}>
+      <div className={scss.popinContainer} style={{ height, width }}>
         {children}
       </div>
     </div>

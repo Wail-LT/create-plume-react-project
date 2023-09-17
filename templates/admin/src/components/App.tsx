@@ -4,12 +4,12 @@ import { ToastContainer } from 'react-toastify';
 import { Logger } from 'simple-logging-system';
 import { getGlobalInstance } from 'plume-ts-di';
 import Router from './layout/Router';
-import Header from './layout/Header';
+import Header from './layout/header/Header';
 import Navigation from './navigation/Navigation';
 import ConditionalRoute from './theme/routes/ConditionalRoute';
 import Login from './features/login/Login';
 import GlobalErrorBoundary from './theme/GlobalErrorBoundary';
-import SessionService from '../services/session/SessionService';
+import SessionService from '@services/session/SessionService';
 
 const logger: Logger = new Logger('App');
 // To make the application have a base path that starts with /admin:

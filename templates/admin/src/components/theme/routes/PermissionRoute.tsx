@@ -1,7 +1,7 @@
 import React from 'react';
 import { getGlobalInstance } from 'plume-ts-di';
-import Permission from '../../../services/session/Permission';
-import SessionService from '../../../services/session/SessionService';
+import Permission from '@services/session/Permission';
+import SessionService from '@services/session/SessionService';
 import ConditionalRoute from './ConditionalRoute';
 
 type Props = {

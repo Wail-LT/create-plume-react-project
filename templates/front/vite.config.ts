@@ -37,12 +37,12 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@scssVariables': require('path').resolve(__dirname, 'assets/scss/variables.scss'),
-      '@api': require('path').resolve(__dirname, 'ts-built/api'),
-      '@components': require('path').resolve(__dirname, 'ts-built/components'),
-      '@i18n': require('path').resolve(__dirname, 'ts-built/i18n'),
-      '@lib': require('path').resolve(__dirname, 'ts-built/lib'),
-      '@services': require('path').resolve(__dirname, 'ts-built/services'),
+      '@scssVariables': path.resolve(__dirname, 'assets/scss/variables/index.scss'),
+      '@api': path.resolve(__dirname, 'ts-built/api'),
+      '@components': path.resolve(__dirname, 'ts-built/components'),
+      '@i18n': path.resolve(__dirname, 'ts-built/i18n'),
+      '@lib': path.resolve(__dirname, 'ts-built/lib'),
+      '@services': path.resolve(__dirname, 'ts-built/services'),
     }
   },
 });

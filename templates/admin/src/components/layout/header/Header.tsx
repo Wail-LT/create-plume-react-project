@@ -1,14 +1,16 @@
 import { MenuItem } from '@mui/material';
+import classNames from 'classnames';
 import { getGlobalInstance } from 'plume-ts-di';
 import React from 'react';
 import { useObservable } from 'micro-observables';
-import LocaleService from '../../i18n/locale/LocaleService';
-import SessionService from '../../services/session/SessionService';
-import DropdownMenu from '../theme/DropdownMenu';
-import LocaleSelector from '../theme/LocaleSelector';
-import useMessages from '../../i18n/hooks/messagesHook';
-import { UserWithExpiration } from '../../services/session/User';
-import { Locale } from '../../lib/locale-resolver/LocaleResolver';
+import LocaleService from '@i18n/locale/LocaleService';
+import SessionService from '@services/session/SessionService';
+import DropdownMenu from '@components/theme/DropdownMenu';
+import LocaleSelector from '@components/theme/LocaleSelector';
+import useMessages from '@i18n/hooks/messagesHook';
+import { UserWithExpiration } from '@services/session/User';
+import { Locale } from '@lib/locale-resolver/LocaleResolver';
+import scss from './header.module.scss';
 
 function makeInitials(fullName?: string): string {
   if (!fullName) {
@@ -40,18 +42,18 @@ export default function Header() {
   const { messages } = useMessages();
 
   return (
-    <header id="main-header">
-      <h1 className="section_name">{messages.app.name}</h1>
-      <div className="header_actions">
-        <div className="header_action">
+    <header id={scss.mainHeader}>
+      <h1>{messages.app.name}</h1>
+      <div className={scss.header_actions}>
+        <div className={scss.header_action}>
           <LocaleSelectorContainer />
         </div>
         {
           currentUser
           && (
-            <div className="header_action header_action--circle">
+            <div className={classNames(scss.header_action, scss['header_action--circle'])}>
               <DropdownMenu label={makeInitials(currentUser.fullName)} id="user-menu">
-                <div id="user-name">{currentUser.fullName}</div>
+                <div id={scss.userName}>{currentUser.fullName}</div>
                 <MenuItem
                   onClick={() => sessionService.disconnect()}
                 >
